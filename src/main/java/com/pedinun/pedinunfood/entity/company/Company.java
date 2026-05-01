@@ -37,10 +37,10 @@ public class Company {
     @Column(nullable = false, unique = true, length = 14)
     private String cnpj;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, unique = true, length = 20)
     private String telefone;
 
-    @Column(name = "slug", nullable = false, unique = true, length = 100)
+    @Column(name = "slug", nullable = false, length = 100)
     private String slug;
 
     @Column(nullable = false, unique = true, length = 260)

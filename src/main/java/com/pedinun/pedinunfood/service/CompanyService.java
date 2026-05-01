@@ -6,6 +6,8 @@ import com.pedinun.pedinunfood.repository.company.CompanyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
@@ -15,7 +17,6 @@ public class CompanyService {
     public Company saveCompany(Company company) {
         verificarCnpj(company.getCnpj());
         verificarEmail(company.getEmail());
-        verificarSlug(company.getSlug());
 
         return companyRepository.save(company);
     }
@@ -32,9 +33,28 @@ public class CompanyService {
         }
     }
 
-    private void verificarSlug(String slug) {
-        if (companyRepository.existsBySlug(slug)) {
-            throw new ConflictionException("O slug já está em uso.");
+    public List<Company> findAll(){
+
+        List<Company> companies = companyRepository.findAll();
+
+        if (companies.isEmpty()) {
+            throw new IllegalStateException("Não existem restaurante cadastradas.");
+        }
+
+        return companies;
+
+    }
+
+
+    public Company findByNome(String nome){
+        verificarNome(nome);
+        return companyRepository.findByNome(nome);
+    }
+
+
+    private void verificarNome(String nome){
+        if (companyRepository.existsByName(nome)) {
+            throw new ConflictionException("não existi nenhum restaurante com esse nome.");
         }
     }
 }

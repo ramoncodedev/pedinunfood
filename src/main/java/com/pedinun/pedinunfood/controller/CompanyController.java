@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/companies")
@@ -23,5 +25,22 @@ public class CompanyController {
         Company companySalvo = companyService.saveCompany(companyEntity);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(CompanyMapper.toResponse(companySalvo));
+    }
+
+    @GetMapping
+    public ResponseEntity<CompanyResponse> findByNome( @RequestParam String nome) {
+        Company company = companyService.findByNome(nome);
+        return ResponseEntity.ok(CompanyMapper.toResponse(company));
+    }
+
+
+    @GetMapping("/restaurantes")
+    public ResponseEntity<List<CompanyResponse>> findAll() {
+        List<Company> companies = companyService.findAll();
+        List<CompanyResponse> companyResponses = companies.stream()
+                .map(CompanyMapper::toResponse)
+                .toList();
+
+        return ResponseEntity.ok(companyResponses);
     }
 }
