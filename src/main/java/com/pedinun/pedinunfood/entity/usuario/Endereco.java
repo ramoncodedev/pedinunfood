@@ -1,5 +1,7 @@
-package com.pedinun.pedinunfood.entity;
+package com.pedinun.pedinunfood.entity.usuario;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.pedinun.pedinunfood.entity.company.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,10 +48,11 @@ public class Endereco {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
+    @JsonBackReference
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id", nullable = false)
+    @JoinColumn(name = "company_id", nullable = true)
     private Company company;
 
     @Column(name = "endereco_principal", nullable = false)

@@ -1,9 +1,10 @@
-package com.pedinun.pedinunfood.entity;
+package com.pedinun.pedinunfood.entity.usuario;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.pedinun.pedinunfood.entity.company.Company;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,7 +12,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -31,7 +34,7 @@ public class Usuario {
     @Column(name = "senha", nullable = false, length = 260)
     private String senha;
 
-    @Column(name = "telefone", nullable = false, length = 20)
+    @Column(name = "telefone", nullable = false, unique = true, length = 20)
     private String telefone;
 
     @Column(nullable = false, length = 14)
@@ -54,6 +57,7 @@ public class Usuario {
     }
 
    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+   @JsonManagedReference
     private List<Endereco> enderecos = new ArrayList<>();
 
     private Boolean ativo = true;
@@ -66,7 +70,7 @@ public class Usuario {
 
 
     public void adicionarEndereco(Endereco endereco) {
-        enderecos.add(endereco);
         endereco.setUsuario(this);
+        this.enderecos.add(endereco);
     }
 }

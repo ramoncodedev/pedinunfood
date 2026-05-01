@@ -1,0 +1,2 @@
+ALTER TABLE tb_enderecos
+ALTER COLUMN company_id DROP NOT NULL;
