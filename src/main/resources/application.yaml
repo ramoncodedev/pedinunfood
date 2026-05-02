@@ -3,9 +3,9 @@ spring:
     name: saas-pedidos
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/saas_pedidos
+    username: admin
+    password: password123
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -13,6 +13,8 @@ spring:
       ddl-auto: validate # Use 'update' para desenvolvimento, 'validate' para produção
     show-sql: true
     properties:
+      multiTenancy: DISCRIMINATOR
+      tenant_identifier_resolver: com.pedinun.pedinunfood.tenant.TenantResolver
       hibernate:
         format_sql: true
 
