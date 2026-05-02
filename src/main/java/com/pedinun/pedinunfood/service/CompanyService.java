@@ -46,14 +46,14 @@ public class CompanyService {
     }
 
 
-    public Company findByNome(String nome){
-        verificarNome(nome);
-        return companyRepository.findByNome(nome);
+    public Company findByNome(String nomeFantasia){
+        verificarNome(nomeFantasia);
+        return companyRepository.findByNomeFantasia(nomeFantasia);
     }
 
 
-    private void verificarNome(String nome){
-        if (companyRepository.existsByName(nome)) {
+    private void verificarNome(String nomeFantasia){
+        if (!companyRepository.existsByNomeFantasia(nomeFantasia)) {
             throw new ConflictionException("não existi nenhum restaurante com esse nome.");
         }
     }

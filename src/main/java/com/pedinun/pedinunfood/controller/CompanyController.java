@@ -28,8 +28,8 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<CompanyResponse> findByNome( @RequestParam String nome) {
-        Company company = companyService.findByNome(nome);
+    public ResponseEntity<CompanyResponse> findByNome( @RequestParam String nomeFantasia) {
+        Company company = companyService.findByNome(nomeFantasia);
         return ResponseEntity.ok(CompanyMapper.toResponse(company));
     }
 

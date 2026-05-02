@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
-    Company findByNome(String nome);
+    Company findByNomeFantasia(String nomeFantasia);
 
     boolean existsByCnpj(String cnpj);
 
-    boolean existsByName(String nome);
+    boolean existsByNomeFantasia(String nomeFantasia);
 
     Company findByEmail(String email);
 
