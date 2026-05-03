@@ -29,6 +29,10 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @TenantId
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", nullable = false)
     private Usuario cliente;

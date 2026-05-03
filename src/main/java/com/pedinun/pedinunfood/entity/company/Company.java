@@ -1,6 +1,5 @@
 package com.pedinun.pedinunfood.entity.company;
 
-
 import com.pedinun.pedinunfood.entity.usuario.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +25,10 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @TenantId
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
 
     @Column(name = "razao_social", nullable = false, length = 100)
     private String razaoSocial;

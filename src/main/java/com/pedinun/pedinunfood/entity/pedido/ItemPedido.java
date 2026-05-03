@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.TenantId;
 
 import java.math.BigDecimal;
 
@@ -20,6 +21,10 @@ public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @TenantId
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id", nullable = false)

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.TenantId;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +21,10 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @TenantId
+    @Column(name = "tenant_id", nullable = false)
+    private Long tenantId;
 
     @Column(nullable = false, length = 9)
     private String cep;

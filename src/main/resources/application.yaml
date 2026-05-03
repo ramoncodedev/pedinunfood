@@ -13,10 +13,10 @@ spring:
       ddl-auto: validate # Use 'update' para desenvolvimento, 'validate' para produção
     show-sql: true
     properties:
-      # multiTenancy: DISCRIMINATOR
-      # tenant_identifier_resolver: com.pedinun.pedinunfood.tenant.TenantResolver
       hibernate:
         format_sql: true
+        multiTenancy: DISCRIMINATOR
+        tenant_identifier_resolver: com.pedinun.pedinunfood.tenant.TenantResolver
 
   flyway:
     enabled: true
