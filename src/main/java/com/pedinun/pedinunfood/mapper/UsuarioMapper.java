@@ -26,7 +26,6 @@ public class UsuarioMapper {
                 .id(usuario.getId())
                 .nome(usuario.getNome())
                 .email(usuario.getEmail())
-                .senha(usuario.getSenha())
                 .telefone(usuario.getTelefone())
                 .cpf(usuario.getCpf())
                 .tipo(usuario.getTipo())

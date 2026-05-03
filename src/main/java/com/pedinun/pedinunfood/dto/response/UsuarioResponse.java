@@ -13,7 +13,6 @@ public record UsuarioResponse(
         long id,
         String nome,
         String email,
-        String senha,
         String telefone,
         String cpf,
         TipoUsuario tipo,
