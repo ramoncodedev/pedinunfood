@@ -28,11 +28,7 @@ public class ProdutoService {
     }
 
     public List<Produto> findAll() {
-        List<Produto> produtos = repository.findAll();
-        if (produtos.isEmpty()) {
-            throw new IllegalStateException("Não existem produtos cadastrados.");
-        }
-        return produtos;
+        return repository.findAll();
     }
 
     public Produto findById(Long id) {

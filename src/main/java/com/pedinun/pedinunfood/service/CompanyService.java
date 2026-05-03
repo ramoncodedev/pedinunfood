@@ -34,15 +34,7 @@ public class CompanyService {
     }
 
     public List<Company> findAll(){
-
-        List<Company> companies = companyRepository.findAll();
-
-        if (companies.isEmpty()) {
-            throw new IllegalStateException("Não existem restaurante cadastradas.");
-        }
-
-        return companies;
-
+        return companyRepository.findAll();
     }
 
 

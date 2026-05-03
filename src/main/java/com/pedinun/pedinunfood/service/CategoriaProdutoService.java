@@ -20,11 +20,7 @@ public class CategoriaProdutoService {
     }
 
     public List<CategoriaProduto> findAll() {
-        List<CategoriaProduto> categorias = repository.findAll();
-        if (categorias.isEmpty()) {
-            throw new IllegalStateException("Não existem categorias cadastradas.");
-        }
-        return categorias;
+        return repository.findAll();
     }
 
     public CategoriaProduto findById(Long id) {
