@@ -13,8 +13,8 @@ spring:
       ddl-auto: validate # Use 'update' para desenvolvimento, 'validate' para produção
     show-sql: true
     properties:
-      multiTenancy: DISCRIMINATOR
-      tenant_identifier_resolver: com.pedinun.pedinunfood.tenant.TenantResolver
+      # multiTenancy: DISCRIMINATOR
+      # tenant_identifier_resolver: com.pedinun.pedinunfood.tenant.TenantResolver
       hibernate:
         format_sql: true
 
@@ -25,5 +25,5 @@ spring:
 
 # Placeholder para o Spring Security / JWT
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:uma-chave-secreta-muito-longa-para-o-jwt-2024-pedinunfood}
   expiration: 86400000 # 24h
